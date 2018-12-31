@@ -42,6 +42,7 @@ namespace stellar_dotnet_sdk_test.responses
             Assert.AreEqual("", assetsPage.Records[0].Links.Toml.Href);
             Assert.AreEqual(false, assetsPage.Records[0].Flags.AuthRequired);
             Assert.AreEqual(false, assetsPage.Records[0].Flags.AuthRevocable);
+            //Assert.AreEqual(false, assetsPage.Records[0].Flags.AU)
         }
     }
 }

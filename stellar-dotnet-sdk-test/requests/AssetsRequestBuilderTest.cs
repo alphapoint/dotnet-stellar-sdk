@@ -50,7 +50,7 @@ namespace stellar_dotnet_sdk_test.requests
             using (var server = new Server("https://horizon-testnet.stellar.org", fakeHttpClient))
             {
                 //the assetcode string really doesn't matter for testing, as the response is static for testing purposes...
-                var assetsPage = await server.Assets.AssetCode("")
+                var assetsPage = await server.Assets
                     .Execute();
 
                 AssetPageDeserializerTest.AssertTestData(assetsPage);

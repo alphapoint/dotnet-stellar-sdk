@@ -37,13 +37,13 @@ instead of per request.
 
 | Resource                            | Changes                                  | .NET Core SDK |
 |:------------------------------------|:-----------------------------------------|:--------------|
-| `GET /assets`                       | Disabled by default.                     | ? |
-| `GET /accounts/{account_id}/offers` | `last_modified_time` field can be `null` |? |
+| `GET /assets`                       | Disabled by default.                     | X (missing 'auth_immutable' flag) |
+| `GET /accounts/{account_id}/offers` | `last_modified_time` field can be `null` | X |
 | `GET /offers/{offer_id}/trades`     | Query fields and syntetic IDs            | ? |
-| `GET /trades` SSE                   | Can be streamed                          | ? |
-| `GET /operation_fee_stats`          | New endpoint                             | ? |
-| `GET /trade_aggregations`           | New `offset` parameter                   | ? |
-| `GET /accounts/{account_id}`        | Displaying `auth_immutable` flag         | ? |
+| `GET /trades` SSE                   | Can be streamed                          | X |
+| `GET /operation_fee_stats`          | New endpoint                             | 2.1.0-beta3 |
+| `GET /trade_aggregations`           | New `offset` parameter                   | 2.1.0-beta3 |
+| `GET /accounts/{account_id}`        | Displaying `auth_immutable` flag         | 2.1.0-beta3 |
 
 ### 0.14.0
 
@@ -61,7 +61,7 @@ instead of per request.
 | `GET /accounts/{account_id}`                | Liabilities fields in Balances collection. | ? |
 | `GET /accounts/{account_id}/effects`        | `sequence_bumped` effect                   | ? |
 | `GET /accounts/{account_id}/effects` SSE    | `sequence_bumped` effect                   | ? |
-| `GET /accounts/{account_id}/offers`         | `last_modified` field removed              | ? |
+| `GET /accounts/{account_id}/offers`         | `last_modified` field removed              | X |
 | `GET /accounts/{account_id}/operations`     | `bump_sequence` operation                  | ? |
 | `GET /accounts/{account_id}/operations` SSE | `bump_sequence` operation                  | ? |
 | `GET /effects`                              | `sequence_bumped` effect                   | ? |
@@ -88,17 +88,17 @@ instead of per request.
 
 | Resource                                 | Changes                                      | .NET Core SDK |
 |:-----------------------------------------|:---------------------------------------------|:--------------|
-| `GET /assets`                            | `amount` can be larger than `MAX_INT64`/10^7 | ? |
-| `GET /ledgers/{ledger_id}/effects`       | `created_at` field added                     | ? |
-| `GET /ledgers/{ledger_id}/effects` SSE   | `created_at` field added                     | ? |
-| `GET /accounts/{account_id}/effects`     | `created_at` field added                     | ? |
-| `GET /accounts/{account_id}/effects` SSE | `created_at` field added                     | ? |
-| `GET /transactions/{tx_id}/effects`      | `created_at` field added                     | ? |
-| `GET /transactions/{tx_id}/effects` SSE  | `created_at` field added                     | ? |
-| `GET /operations/{op_id}/effects`        | `created_at` field added                     | ? |
-| `GET /operations/{op_id}/effects` SSE    | `created_at` field added                     | ? |
-| `GET /effects`                           | `created_at` field added                     | ? |
-| `GET /effects` SSE                       | `created_at` field added                     | ? |
+| `GET /assets`                            | `amount` can be larger than `MAX_INT64`/10^7 | 2.1.0-beta3 |
+| `GET /ledgers/{ledger_id}/effects`       | `created_at` field added                     | 2.1.0-beta3 |
+| `GET /ledgers/{ledger_id}/effects` SSE   | `created_at` field added                     | 2.1.0-beta3 |
+| `GET /accounts/{account_id}/effects`     | `created_at` field added                     | 2.1.0-beta3 |
+| `GET /accounts/{account_id}/effects` SSE | `created_at` field added                     | 2.1.0-beta3 |
+| `GET /transactions/{tx_id}/effects`      | `created_at` field added                     | 2.1.0-beta3 |
+| `GET /transactions/{tx_id}/effects` SSE  | `created_at` field added                     | 2.1.0-beta3 |
+| `GET /operations/{op_id}/effects`        | `created_at` field added                     | 2.1.0-beta3 |
+| `GET /operations/{op_id}/effects` SSE    | `created_at` field added                     | 2.1.0-beta3 |
+| `GET /effects`                           | `created_at` field added                     | 2.1.0-beta3 |
+| `GET /effects` SSE                       | `created_at` field added                     | 2.1.0-beta3 |
 
 ### 0.12.3
 
@@ -106,10 +106,10 @@ instead of per request.
 
 | Resource                                      | .NET Core SDK |
 |:----------------------------------------------|:--------------|
-| `GET /`                                       | ? |
-| `GET /metrics`                                | ? |
-| `GET /ledgers`                                | ? |
-| `GET /ledgers` SSE                            | ? |
+| `GET /`                                       | X (missing '_links') |
+| `GET /metrics`                                | X |
+| `GET /ledgers`                                | 2.1.0-beta3 |
+| `GET /ledgers` SSE                            | 2.1.0-beta3 |
 | `GET /ledgers/{ledger_id}`                    | ? |
 | `GET /ledgers/{ledger_id}/transactions`       | ? |
 | `GET /ledgers/{ledger_id}/transactions` SSE   | ? |
@@ -132,8 +132,8 @@ instead of per request.
 | `GET /accounts/{account_id}/trades`           | ? |
 | `GET /accounts/{account_id}/data/{key}`       | ? |
 | `POST /transactions`                          | ? |
-| `GET /transactions`                           | ? |
-| `GET /transactions` SSE                       | ? |
+| `GET /transactions`                           | 2.1.0-beta3 |
+| `GET /transactions` SSE                       | 2.1.0-beta3 |
 | `GET /transactions/{tx_id}`                   | ? |
 | `GET /transactions/{tx_id}/operations`        | ? |
 | `GET /transactions/{tx_id}/operations` SSE    | ? |
@@ -141,21 +141,21 @@ instead of per request.
 | `GET /transactions/{tx_id}/payments` SSE      | ? |
 | `GET /transactions/{tx_id}/effects`           | ? |
 | `GET /transactions/{tx_id}/effects` SSE       | ? |
-| `GET /operations`                             | ? |
-| `GET /operations` SSE                         | ? |
+| `GET /operations`                             | 2.1.0-beta3 |
+| `GET /operations` SSE                         | 2.1.0-beta3 |
 | `GET /operations/{op_id}`                     | ? |
 | `GET /operations/{op_id}/effects`             | ? |
 | `GET /operations/{op_id}/effects` SSE         | ? |
-| `GET /payments`                               | ? |
-| `GET /payments` SSE                           | ? |
-| `GET /effects`                                | ? |
-| `GET /effects` SSE                            | ? |
+| `GET /payments`                               | 2.1.0-beta3 |
+| `GET /payments` SSE                           | 2.1.0-beta3 |
+| `GET /effects`                                | 2.1.0-beta3 |
+| `GET /effects` SSE                            | 2.1.0-beta3 |
 | `GET /trades`                                 | ? |
 | `GET /trades_aggregations`                    | ? |
 | `GET /offers/{offer_id}/trades`               | ? |
 | `GET /order_book`                             | ? |
 | `GET /order_book` SSE                         | ? |
 | `GET /paths`                                  | ? |
-| `GET /assets`                                 | ? |
+| `GET /assets`                                 | 2.1.0-beta3 |
 
 

@@ -26,7 +26,8 @@
         "num_accounts": 1,
         "flags": {
           "auth_required": false,
-          "auth_revocable": false
+          "auth_revocable": false,
+          "auth_immutable":  false
         }
       },
       {
@@ -3409,7 +3410,8 @@
         "num_accounts": 1,
         "flags": {
           "auth_required": false,
-          "auth_revocable": false
+          "auth_revocable": false,
+          "auth_immutable":  false
         }
       }
     ]

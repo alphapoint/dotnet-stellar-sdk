@@ -41,7 +41,7 @@ namespace stellar_dotnet_sdk.responses
         /// <summary>
         ///
         /// </summary>
-        [JsonProperty(PropertyName = "ammount")]
+        [JsonProperty(PropertyName = "ammount")] //TODO: This looks like a spelling error to me. Quick test don't reveal an issue though, which is strange.
         public string Amount { get; set; }
 
         /// <summary>
