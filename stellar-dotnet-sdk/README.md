@@ -87,7 +87,7 @@ instead of per request.
 - Effect resource contains a new `created_at` field.
 
 | Resource                                 | Changes                                      | .NET Core SDK |
-|:-----------------------------------------|:---------------------------------------------|:--------------------|:-------------------|:---------|
+|:-----------------------------------------|:---------------------------------------------|:--------------|
 | `GET /assets`                            | `amount` can be larger than `MAX_INT64`/10^7 | ? |
 | `GET /ledgers/{ledger_id}/effects`       | `created_at` field added                     | ? |
 | `GET /ledgers/{ledger_id}/effects` SSE   | `created_at` field added                     | ? |
