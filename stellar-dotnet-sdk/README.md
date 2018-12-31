@@ -1,6 +1,6 @@
 # Horizon Protocol Changelog
 
-Any changes to the Horizon Public API should be included in this doc. We will try to keep this in sync or Stellar's version
+Any changes to the Horizon Public API should be included in this doc. We will keep this in sync or Stellar's version
 located at https://github.com/stellar/go/tree/master/protocols/horizon/README.md
 
 
