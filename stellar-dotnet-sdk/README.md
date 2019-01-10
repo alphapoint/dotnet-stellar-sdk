@@ -39,7 +39,7 @@ instead of per request.
 |:------------------------------------|:-----------------------------------------|:--------------|
 | `GET /assets`                       | Disabled by default.                     | X (missing 'auth_immutable' flag) |
 | `GET /accounts/{account_id}/offers` | `last_modified_time` field can be `null` | X |
-| `GET /offers/{offer_id}/trades`     | Query fields and syntetic IDs            | ? |
+| `GET /offers/{offer_id}/trades`     | Query fields and syntetic IDs            | X |
 | `GET /trades` SSE                   | Can be streamed                          | X |
 | `GET /operation_fee_stats`          | New endpoint                             | 2.1.0-beta3 |
 | `GET /trade_aggregations`           | New `offset` parameter                   | 2.1.0-beta3 |
@@ -58,8 +58,8 @@ instead of per request.
 
 | Resource                                    | Changes                                    | .NET Core SDK |
 |:--------------------------------------------|:-------------------------------------------|:---------|
-| `GET /accounts/{account_id}`                | Liabilities fields in Balances collection. | ? |
-| `GET /accounts/{account_id}/effects`        | `sequence_bumped` effect                   | ? |
+| `GET /accounts/{account_id}`                | Liabilities fields in Balances collection. | 2.1.0-beta3 |
+| `GET /accounts/{account_id}/effects`        | `sequence_bumped` effect                   | 2.1.0-beta3 |
 | `GET /accounts/{account_id}/effects` SSE    | `sequence_bumped` effect                   | ? |
 | `GET /accounts/{account_id}/offers`         | `last_modified` field removed              | X |
 | `GET /accounts/{account_id}/operations`     | `bump_sequence` operation                  | ? |
@@ -110,7 +110,7 @@ instead of per request.
 | `GET /metrics`                                | X |
 | `GET /ledgers`                                | 2.1.0-beta3 |
 | `GET /ledgers` SSE                            | 2.1.0-beta3 |
-| `GET /ledgers/{ledger_id}`                    | ? |
+| `GET /ledgers/{ledger_id}`                    | X <ul><li>base_fee and base_reserve elments no longer exists</li><li>unit test doesn't test for base_fee_in_stroops or base_reserve_in_stroops elments</li><li>protocol_version element not supported</li></ul> |
 | `GET /ledgers/{ledger_id}/transactions`       | ? |
 | `GET /ledgers/{ledger_id}/transactions` SSE   | ? |
 | `GET /ledgers/{ledger_id}/operations`         | ? |
