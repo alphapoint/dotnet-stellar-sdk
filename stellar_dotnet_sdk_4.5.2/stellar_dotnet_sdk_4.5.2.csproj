@@ -1,0 +1,447 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1C16B39A-401F-40CD-97A5-9D03FCC44734}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>stellar_dotnet_sdk_4._5._2</RootNamespace>
+    <AssemblyName>stellar_dotnet_sdk_4.5.2</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="dotnetstandard-bip32-4.5.2">
+      <HintPath>E:\dotnetstandard-bip32\dotnetstandard-bip32-4.5.2\bin\x64\Debug\dotnetstandard-bip32-4.5.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Nett, Version=0.10.0.0, Culture=neutral, PublicKeyToken=605dcfe7a1d3365b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nett.0.10.1\lib\Net40\Nett.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account.cs" />
+    <Compile Include="AccountFlag.cs" />
+    <Compile Include="AccountMergeOperation.cs" />
+    <Compile Include="AllowTrustOperation.cs" />
+    <Compile Include="Asset.cs" />
+    <Compile Include="AssetCodeLengthInvalidException.cs" />
+    <Compile Include="AssetTypeCreditAlphaNum.cs" />
+    <Compile Include="AssetTypeCreditAlphaNum12.cs" />
+    <Compile Include="AssetTypeCreditAlphaNum4.cs" />
+    <Compile Include="AssetTypeNative.cs" />
+    <Compile Include="Base32Encoding.cs" />
+    <Compile Include="BumpSequenceOperation.cs" />
+    <Compile Include="ChangeTrustOperation.cs" />
+    <Compile Include="chaos.nacl\CryptoBytes.cs" />
+    <Compile Include="chaos.nacl\Ed25519.cs" />
+    <Compile Include="chaos.nacl\Internal\Array16.cs" />
+    <Compile Include="chaos.nacl\Internal\Array8.cs" />
+    <Compile Include="chaos.nacl\Internal\ByteIntegerConverter.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\base.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\base2.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\d.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\d2.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\fe_0.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\fe_1.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\fe_add.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\fe_cmov.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\fe_cswap.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\fe_frombytes.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\fe_invert.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\fe_isnegative.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\fe_isnonzero.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\fe_mul.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\fe_mul121666.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\fe_neg.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\fe_pow22523.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\fe_sq.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\fe_sq2.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\fe_sub.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\fe_tobytes.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\FieldElement.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\ge_add.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\ge_double_scalarmult.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\ge_frombytes.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\ge_madd.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\ge_msub.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\ge_p1p1_to_p2.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\ge_p1p1_to_p3.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\ge_p2_0.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\ge_p2_dbl.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\ge_p3_0.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\ge_p3_dbl.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\ge_p3_tobytes.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\ge_p3_to_cached.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\ge_p3_to_p2.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\ge_precomp_0.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\ge_scalarmult_base.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\ge_sub.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\ge_tobytes.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\GroupElement.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\keypair.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\open.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\scalarmult.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\sc_clamp.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\sc_mul_add.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\sc_reduce.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\sign.cs" />
+    <Compile Include="chaos.nacl\Internal\Ed25519Ref10\sqrtm1.cs" />
+    <Compile Include="chaos.nacl\Internal\InternalAssert.cs" />
+    <Compile Include="chaos.nacl\Internal\Poly1305Donna.cs" />
+    <Compile Include="chaos.nacl\Internal\Salsa\Salsa20.cs" />
+    <Compile Include="chaos.nacl\Internal\Salsa\SalsaCore.cs" />
+    <Compile Include="chaos.nacl\Internal\Sha512Internal.cs" />
+    <Compile Include="chaos.nacl\MontgomeryCurve25519.cs" />
+    <Compile Include="chaos.nacl\Sha512.cs" />
+    <Compile Include="CreateAccountOperation.cs" />
+    <Compile Include="CreatePassiveOfferOperation.cs" />
+    <Compile Include="EnumerableExtensions.cs" />
+    <Compile Include="EventSource.cs" />
+    <Compile Include="federation\ConnectionErrorException.cs" />
+    <Compile Include="federation\Federation.cs" />
+    <Compile Include="federation\FederationResponse.cs" />
+    <Compile Include="federation\FederationServer.cs" />
+    <Compile Include="federation\FederationServerInvalidException.cs" />
+    <Compile Include="federation\MalformedAddressException.cs" />
+    <Compile Include="federation\NoFederationServerException.cs" />
+    <Compile Include="federation\NotFoundException.cs" />
+    <Compile Include="federation\ServerErrorException.cs" />
+    <Compile Include="federation\StellarTomlNotFoundInvalidException.cs" />
+    <Compile Include="FormatException.cs" />
+    <Compile Include="HashCode.cs" />
+    <Compile Include="IEventSource.cs" />
+    <Compile Include="InflationOperation.cs" />
+    <Compile Include="ITransactionBuilderAccount.cs" />
+    <Compile Include="KeyPair.cs" />
+    <Compile Include="ManageDataOperation.cs" />
+    <Compile Include="ManageOfferOperation.cs" />
+    <Compile Include="Memo.cs" />
+    <Compile Include="MemoHash.cs" />
+    <Compile Include="MemoHashAbstract.cs" />
+    <Compile Include="MemoId.cs" />
+    <Compile Include="MemoNone.cs" />
+    <Compile Include="MemoReturnHash.cs" />
+    <Compile Include="MemoText.cs" />
+    <Compile Include="MemoTooLongException.cs" />
+    <Compile Include="Network.cs" />
+    <Compile Include="NoNetworkSelectedException.cs" />
+    <Compile Include="NotEnoughSignaturesException.cs" />
+    <Compile Include="Operation.cs" />
+    <Compile Include="OperationThreshold.cs" />
+    <Compile Include="PathPaymentOperation.cs" />
+    <Compile Include="PaymentOperation.cs" />
+    <Compile Include="Price.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="requests\AccountsRequestBuilder.cs" />
+    <Compile Include="requests\AssetsRequestBuilder.cs" />
+    <Compile Include="requests\ClientProtocolException.cs" />
+    <Compile Include="requests\EffectsRequestBuilder.cs" />
+    <Compile Include="requests\FriendBotRequestBuilder.cs" />
+    <Compile Include="requests\HttpResponseException.cs" />
+    <Compile Include="requests\LedgersRequestBuilder.cs" />
+    <Compile Include="requests\OffersRequestBuilder.cs" />
+    <Compile Include="requests\OperationFeeStatsRequestBuilder.cs" />
+    <Compile Include="requests\OperationsRequestBuilder.cs" />
+    <Compile Include="requests\OrderBookRequestBuilder.cs" />
+    <Compile Include="requests\PathsRequestBuilder.cs" />
+    <Compile Include="requests\PaymentsRequestBuilder.cs" />
+    <Compile Include="requests\RequestBuilder.cs" />
+    <Compile Include="requests\RequestBuilderExecutePageable.cs" />
+    <Compile Include="requests\RequestBuilderStreamable.cs" />
+    <Compile Include="requests\ResponseHandler.cs" />
+    <Compile Include="requests\TooManyRequestsException.cs" />
+    <Compile Include="requests\TradesAggregationRequestBuilder.cs" />
+    <Compile Include="requests\TradesRequestBuilder.cs" />
+    <Compile Include="requests\TransactionsRequestBuilder.cs" />
+    <Compile Include="responses\AccountDataResponse.cs" />
+    <Compile Include="responses\AccountResponse.cs" />
+    <Compile Include="responses\AccountResponseLinks.cs" />
+    <Compile Include="responses\AssetDeserializer.cs" />
+    <Compile Include="responses\AssetResponse.cs" />
+    <Compile Include="responses\AssetResponseFlags.cs" />
+    <Compile Include="responses\AssetResponseLinks.cs" />
+    <Compile Include="responses\Balance.cs" />
+    <Compile Include="responses\EffectDeserializer.cs" />
+    <Compile Include="responses\effects\AccountCreatedEffectResponse.cs" />
+    <Compile Include="responses\effects\AccountCreditedEffectResponse.cs" />
+    <Compile Include="responses\effects\AccountDebitedEffectResponse.cs" />
+    <Compile Include="responses\effects\AccountFlagsUpdatedEffectResponse.cs" />
+    <Compile Include="responses\effects\AccountHomeDomainUpdatedEffectResponse.cs" />
+    <Compile Include="responses\effects\AccountInflationDestinationUpdatedEffectResponse.cs" />
+    <Compile Include="responses\effects\AccountRemovedEffectResponse.cs" />
+    <Compile Include="responses\effects\AccountThresholdsUpdatedEffectResponse.cs" />
+    <Compile Include="responses\effects\DataCreatedEffectResponse.cs" />
+    <Compile Include="responses\effects\DataRemovedEffectResponse.cs" />
+    <Compile Include="responses\effects\DataUpdatedEffectResponse.cs" />
+    <Compile Include="responses\effects\EffectResponse.cs" />
+    <Compile Include="responses\effects\OfferCreatedEffectResponse.cs" />
+    <Compile Include="responses\effects\OfferRemovedEffectResponse.cs" />
+    <Compile Include="responses\effects\OfferUpdatedEffectResponse.cs" />
+    <Compile Include="responses\effects\SequenceBumpedEffectResponse.cs" />
+    <Compile Include="responses\effects\SignerCreatedEffectResponse.cs" />
+    <Compile Include="responses\effects\SignerEffectResponse.cs" />
+    <Compile Include="responses\effects\SignerRemovedEffectResponse.cs" />
+    <Compile Include="responses\effects\SignerUpdatedEffectResponse.cs" />
+    <Compile Include="responses\effects\TradeEffectResponse.cs" />
+    <Compile Include="responses\effects\TrustlineAuthorizationResponse.cs" />
+    <Compile Include="responses\effects\TrustlineAuthorizedEffectResponse.cs" />
+    <Compile Include="responses\effects\TrustlineCreatedEffectResponse.cs" />
+    <Compile Include="responses\effects\TrustlineCUDResponse.cs" />
+    <Compile Include="responses\effects\TrustlineDeauthorizedEffectResponse.cs" />
+    <Compile Include="responses\effects\TrustlineRemovedEffectResponse.cs" />
+    <Compile Include="responses\effects\TrustlineUpdatedEffectResponse.cs" />
+    <Compile Include="responses\Flags.cs" />
+    <Compile Include="responses\FriendBotResponse.cs" />
+    <Compile Include="responses\FriendBotResponseLinks.cs" />
+    <Compile Include="responses\IPagingToken.cs" />
+    <Compile Include="responses\JsonSingleton.cs" />
+    <Compile Include="responses\KeyPairTypeAdapter.cs" />
+    <Compile Include="responses\LedgerResponse.cs" />
+    <Compile Include="responses\Link.cs" />
+    <Compile Include="responses\LinkDeserializer.cs" />
+    <Compile Include="responses\OfferResponse.cs" />
+    <Compile Include="responses\OfferResponseLinks.cs" />
+    <Compile Include="responses\OperationDeserializer.cs" />
+    <Compile Include="responses\OperationFeeStatsResponse.cs" />
+    <Compile Include="responses\operations\AccountMergeOperationResponse.cs" />
+    <Compile Include="responses\operations\AllowTrustOperationResponse.cs" />
+    <Compile Include="responses\operations\BumpSequenceOperationResponse.cs" />
+    <Compile Include="responses\operations\ChangeTrustOperationResponse.cs" />
+    <Compile Include="responses\operations\CreateAccountOperationResponse.cs" />
+    <Compile Include="responses\operations\CreatePassiveOfferOperationResponse.cs" />
+    <Compile Include="responses\operations\InflationOperationResponse.cs" />
+    <Compile Include="responses\operations\ManageDataOperationResponse.cs" />
+    <Compile Include="responses\operations\ManageOfferOperationResponse.cs" />
+    <Compile Include="responses\operations\OperationResponse.cs" />
+    <Compile Include="responses\operations\OperationResponseLinks.cs" />
+    <Compile Include="responses\operations\PathPaymentOperationResponse.cs" />
+    <Compile Include="responses\operations\PaymentOperationResponse.cs" />
+    <Compile Include="responses\operations\SetOptionsOperationResponse.cs" />
+    <Compile Include="responses\OrderBookResponse.cs" />
+    <Compile Include="responses\Page.cs" />
+    <Compile Include="responses\PageLinks.cs" />
+    <Compile Include="responses\PathResponse.cs" />
+    <Compile Include="responses\PathResponseLinks.cs" />
+    <Compile Include="responses\Response.cs" />
+    <Compile Include="responses\RootResponse.cs" />
+    <Compile Include="responses\Signer.cs" />
+    <Compile Include="responses\SubmitTransactionResponse.cs" />
+    <Compile Include="responses\Thresholds.cs" />
+    <Compile Include="responses\TradeAggregationResponse.cs" />
+    <Compile Include="responses\TradeResponse.cs" />
+    <Compile Include="responses\TradeResponseLinks.cs" />
+    <Compile Include="responses\TransactionDeserializer.cs" />
+    <Compile Include="responses\TransactionResponse.cs" />
+    <Compile Include="Server.cs" />
+    <Compile Include="SetOptionsOperation.cs" />
+    <Compile Include="Signer.cs" />
+    <Compile Include="StrKey.cs" />
+    <Compile Include="TimeBounds.cs" />
+    <Compile Include="TooManySignaturesException.cs" />
+    <Compile Include="Transaction.cs" />
+    <Compile Include="UriBuilderExtensions.cs" />
+    <Compile Include="UriTemplate.cs" />
+    <Compile Include="Util.cs" />
+    <Compile Include="xdr\generated\AccountEntry.cs" />
+    <Compile Include="xdr\generated\AccountFlags.cs" />
+    <Compile Include="xdr\generated\AccountID.cs" />
+    <Compile Include="xdr\generated\AccountMergeResult.cs" />
+    <Compile Include="xdr\generated\AccountMergeResultCode.cs" />
+    <Compile Include="xdr\generated\AllowTrustOp.cs" />
+    <Compile Include="xdr\generated\AllowTrustResult.cs" />
+    <Compile Include="xdr\generated\AllowTrustResultCode.cs" />
+    <Compile Include="xdr\generated\Asset.cs" />
+    <Compile Include="xdr\generated\AssetType.cs" />
+    <Compile Include="xdr\generated\Auth.cs" />
+    <Compile Include="xdr\generated\AuthCert.cs" />
+    <Compile Include="xdr\generated\AuthenticatedMessage.cs" />
+    <Compile Include="xdr\generated\BucketEntry.cs" />
+    <Compile Include="xdr\generated\BucketEntryType.cs" />
+    <Compile Include="xdr\generated\BumpSequenceOp.cs" />
+    <Compile Include="xdr\generated\BumpSequenceResult.cs" />
+    <Compile Include="xdr\generated\BumpSequenceResultCode.cs" />
+    <Compile Include="xdr\generated\ChangeTrustOp.cs" />
+    <Compile Include="xdr\generated\ChangeTrustResult.cs" />
+    <Compile Include="xdr\generated\ChangeTrustResultCode.cs" />
+    <Compile Include="xdr\generated\ClaimOfferAtom.cs" />
+    <Compile Include="xdr\generated\CreateAccountOp.cs" />
+    <Compile Include="xdr\generated\CreateAccountResult.cs" />
+    <Compile Include="xdr\generated\CreateAccountResultCode.cs" />
+    <Compile Include="xdr\generated\CreatePassiveOfferOp.cs" />
+    <Compile Include="xdr\generated\CryptoKeyType.cs" />
+    <Compile Include="xdr\generated\Curve25519Public.cs" />
+    <Compile Include="xdr\generated\Curve25519Secret.cs" />
+    <Compile Include="xdr\generated\DataEntry.cs" />
+    <Compile Include="xdr\generated\DataValue.cs" />
+    <Compile Include="xdr\generated\DecoratedSignature.cs" />
+    <Compile Include="xdr\generated\DontHave.cs" />
+    <Compile Include="xdr\generated\EnvelopeType.cs" />
+    <Compile Include="xdr\generated\Error.cs" />
+    <Compile Include="xdr\generated\ErrorCode.cs" />
+    <Compile Include="xdr\generated\Hash.cs" />
+    <Compile Include="xdr\generated\Hello.cs" />
+    <Compile Include="xdr\generated\HmacSha256Key.cs" />
+    <Compile Include="xdr\generated\HmacSha256Mac.cs" />
+    <Compile Include="xdr\generated\InflationPayout.cs" />
+    <Compile Include="xdr\generated\InflationResult.cs" />
+    <Compile Include="xdr\generated\InflationResultCode.cs" />
+    <Compile Include="xdr\generated\Int32.cs" />
+    <Compile Include="xdr\generated\Int64.cs" />
+    <Compile Include="xdr\generated\IPAddrType.cs" />
+    <Compile Include="xdr\generated\LedgerEntry.cs" />
+    <Compile Include="xdr\generated\LedgerEntryChange.cs" />
+    <Compile Include="xdr\generated\LedgerEntryChanges.cs" />
+    <Compile Include="xdr\generated\LedgerEntryChangeType.cs" />
+    <Compile Include="xdr\generated\LedgerEntryType.cs" />
+    <Compile Include="xdr\generated\LedgerHeader.cs" />
+    <Compile Include="xdr\generated\LedgerHeaderHistoryEntry.cs" />
+    <Compile Include="xdr\generated\LedgerKey.cs" />
+    <Compile Include="xdr\generated\LedgerSCPMessages.cs" />
+    <Compile Include="xdr\generated\LedgerUpgrade.cs" />
+    <Compile Include="xdr\generated\LedgerUpgradeType.cs" />
+    <Compile Include="xdr\generated\Liabilities.cs" />
+    <Compile Include="xdr\generated\ManageDataOp.cs" />
+    <Compile Include="xdr\generated\ManageDataResult.cs" />
+    <Compile Include="xdr\generated\ManageDataResultCode.cs" />
+    <Compile Include="xdr\generated\ManageOfferEffect.cs" />
+    <Compile Include="xdr\generated\ManageOfferOp.cs" />
+    <Compile Include="xdr\generated\ManageOfferResult.cs" />
+    <Compile Include="xdr\generated\ManageOfferResultCode.cs" />
+    <Compile Include="xdr\generated\ManageOfferSuccessResult.cs" />
+    <Compile Include="xdr\generated\Memo.cs" />
+    <Compile Include="xdr\generated\MemoType.cs" />
+    <Compile Include="xdr\generated\MessageType.cs" />
+    <Compile Include="xdr\generated\NodeID.cs" />
+    <Compile Include="xdr\generated\OfferEntry.cs" />
+    <Compile Include="xdr\generated\OfferEntryFlags.cs" />
+    <Compile Include="xdr\generated\Operation.cs" />
+    <Compile Include="xdr\generated\OperationMeta.cs" />
+    <Compile Include="xdr\generated\OperationResult.cs" />
+    <Compile Include="xdr\generated\OperationResultCode.cs" />
+    <Compile Include="xdr\generated\OperationType.cs" />
+    <Compile Include="xdr\generated\PathPaymentOp.cs" />
+    <Compile Include="xdr\generated\PathPaymentResult.cs" />
+    <Compile Include="xdr\generated\PathPaymentResultCode.cs" />
+    <Compile Include="xdr\generated\PaymentOp.cs" />
+    <Compile Include="xdr\generated\PaymentResult.cs" />
+    <Compile Include="xdr\generated\PaymentResultCode.cs" />
+    <Compile Include="xdr\generated\PeerAddress.cs" />
+    <Compile Include="xdr\generated\Price.cs" />
+    <Compile Include="xdr\generated\PublicKey.cs" />
+    <Compile Include="xdr\generated\PublicKeyType.cs" />
+    <Compile Include="xdr\generated\SCPBallot.cs" />
+    <Compile Include="xdr\generated\SCPEnvelope.cs" />
+    <Compile Include="xdr\generated\SCPHistoryEntry.cs" />
+    <Compile Include="xdr\generated\SCPHistoryEntryV0.cs" />
+    <Compile Include="xdr\generated\SCPNomination.cs" />
+    <Compile Include="xdr\generated\SCPQuorumSet.cs" />
+    <Compile Include="xdr\generated\SCPStatement.cs" />
+    <Compile Include="xdr\generated\SCPStatementType.cs" />
+    <Compile Include="xdr\generated\SequenceNumber.cs" />
+    <Compile Include="xdr\generated\SetOptionsOp.cs" />
+    <Compile Include="xdr\generated\SetOptionsResult.cs" />
+    <Compile Include="xdr\generated\SetOptionsResultCode.cs" />
+    <Compile Include="xdr\generated\Signature.cs" />
+    <Compile Include="xdr\generated\SignatureHint.cs" />
+    <Compile Include="xdr\generated\Signer.cs" />
+    <Compile Include="xdr\generated\SignerKey.cs" />
+    <Compile Include="xdr\generated\SignerKeyType.cs" />
+    <Compile Include="xdr\generated\SimplePaymentResult.cs" />
+    <Compile Include="xdr\generated\StellarMessage.cs" />
+    <Compile Include="xdr\generated\StellarValue.cs" />
+    <Compile Include="xdr\generated\String32.cs" />
+    <Compile Include="xdr\generated\String64.cs" />
+    <Compile Include="xdr\generated\ThresholdIndexes.cs" />
+    <Compile Include="xdr\generated\Thresholds.cs" />
+    <Compile Include="xdr\generated\TimeBounds.cs" />
+    <Compile Include="xdr\generated\Transaction.cs" />
+    <Compile Include="xdr\generated\TransactionEnvelope.cs" />
+    <Compile Include="xdr\generated\TransactionHistoryEntry.cs" />
+    <Compile Include="xdr\generated\TransactionHistoryResultEntry.cs" />
+    <Compile Include="xdr\generated\TransactionMeta.cs" />
+    <Compile Include="xdr\generated\TransactionMetaV1.cs" />
+    <Compile Include="xdr\generated\TransactionResult.cs" />
+    <Compile Include="xdr\generated\TransactionResultCode.cs" />
+    <Compile Include="xdr\generated\TransactionResultPair.cs" />
+    <Compile Include="xdr\generated\TransactionResultSet.cs" />
+    <Compile Include="xdr\generated\TransactionSet.cs" />
+    <Compile Include="xdr\generated\TransactionSignaturePayload.cs" />
+    <Compile Include="xdr\generated\TrustLineEntry.cs" />
+    <Compile Include="xdr\generated\TrustLineFlags.cs" />
+    <Compile Include="xdr\generated\Uint256.cs" />
+    <Compile Include="xdr\generated\Uint32.cs" />
+    <Compile Include="xdr\generated\Uint64.cs" />
+    <Compile Include="xdr\generated\UpgradeType.cs" />
+    <Compile Include="xdr\generated\Value.cs" />
+    <Compile Include="xdr\XdrDataInputStream.cs" />
+    <Compile Include="xdr\XdrDataOutputStream.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="chaos.nacl\Internal\Salsa\replace regex.txt" />
+    <None Include="packages.config" />
+    <None Include="xdr\generate.bat" />
+    <None Include="xdr\Stellar-ledger-entries.x" />
+    <None Include="xdr\Stellar-ledger.x" />
+    <None Include="xdr\Stellar-overlay.x" />
+    <None Include="xdr\Stellar-SCP.x" />
+    <None Include="xdr\Stellar-transaction.x" />
+    <None Include="xdr\Stellar-types.x" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
