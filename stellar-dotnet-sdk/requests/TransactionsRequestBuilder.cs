@@ -43,10 +43,10 @@ namespace stellar_dotnet_sdk.requests
         /// <a href="https://www.stellar.org/developers/horizon/reference/payments-for-account.html">Transactions for Account</a>
         /// </Summary>
         /// <param name="account">Account for which to get transactions</param> 
-        public TransactionsRequestBuilder ForAccount(KeyPair account)
+        public TransactionsRequestBuilder ForAccount(string account)
         {
             account = account ?? throw new ArgumentNullException(nameof(account), "account cannot be null");
-            this.SetSegments("accounts", account.AccountId, "transactions");
+            this.SetSegments("accounts", account, "transactions");
             return this;
         }
 
@@ -60,5 +60,19 @@ namespace stellar_dotnet_sdk.requests
             SetSegments("ledgers", ledgerSeq.ToString(), "transactions");
             return this;
         }
+        
+        /// <summary>
+        ///     Set <code>include_failed</code> flag to include failed transactions.
+        /// </summary>
+        /// <param name="includeFailed">Set to true to include failed transactions in results</param>
+        /// <returns>
+        ///     <see cref="OperationsRequestBuilder" />
+        /// </returns>
+        public TransactionsRequestBuilder IncludeFailed(bool includeFailed)
+        {
+            UriBuilder.SetQueryParam("include_failed", includeFailed.ToString().ToLowerInvariant());
+            
+            return this;
+        }        
     }
 }

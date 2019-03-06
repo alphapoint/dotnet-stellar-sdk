@@ -37,7 +37,7 @@ namespace stellar_dotnet_sdk_test.requests
         {
             var server = new Server("https://horizon-testnet.stellar.org");
             var uri = server.Operations
-                .ForAccount(KeyPair.FromAccountId("GBRPYHIL2CI3FNQ4BXLFMNDLFJUNPU2HY3ZMFSHONUCEOASW7QC7OX2H"))
+                .ForAccount("GBRPYHIL2CI3FNQ4BXLFMNDLFJUNPU2HY3ZMFSHONUCEOASW7QC7OX2H")
                 .Limit(200)
                 .Order(OrderDirection.DESC)
                 .BuildUri();
@@ -67,6 +67,19 @@ namespace stellar_dotnet_sdk_test.requests
         }
 
         [TestMethod]
+        public void TestIncludeFailed()
+        {
+            var server = new Server("https://horizon-testnet.stellar.org");
+            var uri = server.Operations
+                .ForLedger(200000000000L)
+                .IncludeFailed(true)
+                .Limit(50)
+                .Order(OrderDirection.ASC)
+                .BuildUri();
+            Assert.AreEqual("https://horizon-testnet.stellar.org/ledgers/200000000000/operations?include_failed=true&limit=50&order=asc", uri.ToString());            
+        }
+        
+        [TestMethod]
         public async Task TestOperationsExecute()
         {
             var jsonResponse = File.ReadAllText(Path.Combine("testdata", "operationPage.json"));
@@ -74,7 +87,7 @@ namespace stellar_dotnet_sdk_test.requests
 
             using (var server = new Server("https://horizon-testnet.stellar.org", fakeHttpClient))
             {
-                var account = await server.Operations.ForAccount(KeyPair.FromAccountId("GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7"))
+                var account = await server.Operations.ForAccount("GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7")
                     .Execute();
 
                 OperationPageDeserializerTest.AssertTestData(account);

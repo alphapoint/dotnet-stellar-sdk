@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.ComponentModel;
+using Newtonsoft.Json;
 
 namespace stellar_dotnet_sdk.responses.operations
 {
@@ -21,8 +22,7 @@ namespace stellar_dotnet_sdk.responses.operations
         /// Source Account of Operation
         /// </summary>
         [JsonProperty(PropertyName = "source_account")]
-        [JsonConverter(typeof(KeyPairTypeAdapter))]
-        public KeyPair SourceAccount { get; private set; }
+        public string SourceAccount { get; private set; }
 
         /// <summary>
         /// Paging Token of Paging
@@ -61,6 +61,13 @@ namespace stellar_dotnet_sdk.responses.operations
         /// </summary>
         [JsonProperty(PropertyName = "transaction_hash")]
         public string TransactionHash { get; private set; }
+
+        /// <summary>
+        /// Returns whether the operation transaction was successful.
+        /// </summary>
+        [DefaultValue(true)]
+        [JsonProperty(PropertyName = "transaction_successful", DefaultValueHandling = DefaultValueHandling.Populate)]
+        public bool TransactionSuccessful { get; private set; }
 
         /// <summary>
         /// Links of Paging

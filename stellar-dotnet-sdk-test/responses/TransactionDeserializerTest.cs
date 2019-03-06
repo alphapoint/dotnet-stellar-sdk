@@ -26,6 +26,7 @@ namespace stellar_dotnet_sdk_test.responses
             var serialized = JsonConvert.SerializeObject(transaction);
             var back = JsonConvert.DeserializeObject<TransactionResponse>(serialized);
 
+            Assert.IsTrue(back.Successful);
             AssertTestData(back);
         }
 
@@ -35,8 +36,7 @@ namespace stellar_dotnet_sdk_test.responses
             Assert.AreEqual(915744L, transaction.Ledger);
             Assert.AreEqual("2015-11-20T17:01:28Z", transaction.CreatedAt);
             Assert.AreEqual("3933090531512320", transaction.PagingToken);
-            Assert.AreEqual("GCUB7JL4APK7LKJ6MZF7Q2JTLHAGNBIUA7XIXD5SQTG52GQ2DAT6XZMK",
-                transaction.SourceAccount.AccountId);
+            Assert.AreEqual("GCUB7JL4APK7LKJ6MZF7Q2JTLHAGNBIUA7XIXD5SQTG52GQ2DAT6XZMK", transaction.SourceAccount);
             Assert.AreEqual(2373051035426646L, transaction.SourceAccountSequence);
             Assert.AreEqual(100L, transaction.FeePaid);
             Assert.AreEqual(1, transaction.OperationCount);
@@ -73,6 +73,7 @@ namespace stellar_dotnet_sdk_test.responses
             var json = File.ReadAllText(Path.Combine("testdata", "transactionTransactionWithoutMemo.json"));
             var transaction = JsonSingleton.GetInstance<TransactionResponse>(json);
 
+            Assert.IsFalse(transaction.Successful);
             Assert.IsTrue(transaction.Memo is MemoNone);
         }
     }

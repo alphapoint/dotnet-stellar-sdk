@@ -33,7 +33,7 @@ namespace stellar_dotnet_sdk_test.requests
 
             using (var server = new Server("https://horizon-testnet.stellar.org", fakeHttpClient))
             {
-                var account = await server.Accounts.Account(KeyPair.FromAccountId("GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7"));
+                var account = await server.Accounts.Account("GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7");
 
                 AccountDeserializerTest.AssertTestData(account);
             }
@@ -47,8 +47,8 @@ namespace stellar_dotnet_sdk_test.requests
 
             using (var server = new Server("https://horizon-testnet.stellar.org", fakeHttpClient))
             {
-                var accountData = await server.Accounts.AccountData(KeyPair.FromAccountId("GAKLBGHNHFQ3BMUYG5KU4BEWO6EYQHZHAXEWC33W34PH2RBHZDSQBD75"), "TestValue");
-            
+                var accountData = await server.Accounts.AccountData("GAKLBGHNHFQ3BMUYG5KU4BEWO6EYQHZHAXEWC33W34PH2RBHZDSQBD75", "TestValue");
+
                 Assert.AreEqual("VGVzdFZhbHVl", accountData.Value);
                 Assert.AreEqual("TestValue", accountData.ValueDecoded);
             }

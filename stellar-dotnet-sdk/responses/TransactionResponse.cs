@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.ComponentModel;
 using stellar_dotnet_sdk.responses.effects;
 using stellar_dotnet_sdk.responses.operations;
 using stellar_dotnet_sdk.responses.page;
@@ -17,8 +18,11 @@ namespace stellar_dotnet_sdk.responses
         public string CreatedAt { get; private set; }
 
         [JsonProperty(PropertyName = "source_account")]
-        [JsonConverter(typeof(KeyPairTypeAdapter))]
-        public KeyPair SourceAccount { get; private set; }
+        public string SourceAccount { get; private set; }
+        
+        [DefaultValue(true)]
+        [JsonProperty(PropertyName = "successful", DefaultValueHandling = DefaultValueHandling.Populate)]
+        public bool Successful { get; private set; }
 
         [JsonProperty(PropertyName = "paging_token")]
         public string PagingToken { get; private set; }
@@ -99,12 +103,15 @@ namespace stellar_dotnet_sdk.responses
             // Used by deserializer
         }
 
-        public TransactionResponse(string hash, long ledger, string createdAt, KeyPair sourceAccount, string pagingToken, long sourceAccountSequence, long feePaid, int operationCount, string envelopeXdr, string resultXdr, string resultMetaXdr, Memo memo, TransactionResponseLinks links)
+        public TransactionResponse(string hash, long ledger, string createdAt, string sourceAccount, bool successful,
+            string pagingToken, long sourceAccountSequence, long feePaid, int operationCount, string envelopeXdr, 
+            string resultXdr, string resultMetaXdr, Memo memo, TransactionResponseLinks links)
         {
             Hash = hash;
             Ledger = ledger;
             CreatedAt = createdAt;
             SourceAccount = sourceAccount;
+            Successful = successful;
             PagingToken = pagingToken;
             SourceAccountSequence = sourceAccountSequence;
             FeePaid = feePaid;

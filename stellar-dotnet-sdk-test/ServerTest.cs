@@ -1,13 +1,16 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Castle.DynamicProxy.Generators;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Moq.Language;
 using stellar_dotnet_sdk;
+using stellar_dotnet_sdk.responses;
 
 namespace stellar_dotnet_sdk_test
 {
@@ -31,12 +34,9 @@ namespace stellar_dotnet_sdk_test
         {
             Network.UseTestNetwork();
 
-            _server = new Server("https://horizon.stellar.org");
-
             _fakeHttpMessageHandler = new Mock<FakeHttpMessageHandler> {CallBase = true};
             _httpClient = new HttpClient(_fakeHttpMessageHandler.Object);
-
-            Server.HttpClient = _httpClient;
+            _server = new Server("https://horizon.stellar.org", _httpClient);
         }
 
         [TestCleanup]
@@ -61,7 +61,7 @@ namespace stellar_dotnet_sdk_test
             var source = KeyPair.FromSecretSeed("SCH27VUZZ6UAKB67BDNF6FA42YMBMQCBKXWGMFD5TZ6S5ZZCZFLRXKHS");
             var destination = KeyPair.FromAccountId("GDW6AUTBXTOC7FIKUO5BOO3OGLK4SF7ZPOBLMQHMZDI45J2Z6VXRB5NR");
 
-            var account = new Account(source, 2908908335136768L);
+            var account = new Account(source.AccountId, 2908908335136768L);
             var builder = new Transaction.Builder(account)
                 .AddOperation(new CreateAccountOperation.Builder(destination, "2000").Build())
                 .AddMemo(Memo.Text("Hello world!"));
@@ -86,6 +86,33 @@ namespace stellar_dotnet_sdk_test
             Assert.AreEqual(response.Ledger, 826150L);
             Assert.AreEqual(response.Hash, "2634d2cf5adcbd3487d1df042166eef53830115844fdde1588828667bf93ff42");
             Assert.IsNull(response.SubmitTransactionResponseExtras);
+        }
+
+        [TestMethod]
+        public async Task TestDefaultClientHeaders()
+        {
+            var messageHandler = new Mock<FakeHttpMessageHandler> {CallBase = true};
+            var httpClient = Server.CreateHttpClient(messageHandler.Object);
+            var server = new Server("https://horizon.stellar.org", httpClient);
+
+            var json = File.ReadAllText(Path.Combine("testdata", "serverSuccess.json"));
+            var clientName = "";
+            var clientVersion = "";
+
+            messageHandler
+                .Setup(h => h.Send(It.IsAny<HttpRequestMessage>()))
+                .Callback<HttpRequestMessage>(msg =>
+                    {
+                        clientName = msg.Headers.GetValues("X-Client-Name").FirstOrDefault();
+                        clientVersion = msg.Headers.GetValues("X-Client-Version").FirstOrDefault();
+                    })
+                .Returns(ResponseMessage(HttpOk, json));
+
+            var response = await server.SubmitTransaction(BuildTransaction());
+
+            Assert.IsTrue(response.IsSuccess());
+            Assert.AreEqual("stellar-dotnet-sdk", clientName);
+            Assert.IsFalse(string.IsNullOrWhiteSpace(clientVersion));
         }
 
         [TestMethod]

@@ -22,7 +22,7 @@ namespace stellar_dotnet_sdk.requests
             if (asset is AssetTypeCreditAlphaNum creditAlphaNumAsset)
             {
                 UriBuilder.SetQueryParam("base_asset_code", creditAlphaNumAsset.Code);
-                UriBuilder.SetQueryParam("base_asset_issuer", creditAlphaNumAsset.Issuer.AccountId);
+                UriBuilder.SetQueryParam("base_asset_issuer", creditAlphaNumAsset.Issuer);
             }
 
             return this;
@@ -40,7 +40,7 @@ namespace stellar_dotnet_sdk.requests
             if (asset is AssetTypeCreditAlphaNum creditAlphaNumAsset)
             {
                 UriBuilder.SetQueryParam("counter_asset_code", creditAlphaNumAsset.Code);
-                UriBuilder.SetQueryParam("counter_asset_issuer", creditAlphaNumAsset.Issuer.AccountId);
+                UriBuilder.SetQueryParam("counter_asset_issuer", creditAlphaNumAsset.Issuer);
             }
 
             return this;
@@ -51,11 +51,12 @@ namespace stellar_dotnet_sdk.requests
         /// Builds request to <code>GET /accounts/{account}/trades</code>
         /// <a href="https://www.stellar.org/developers/horizon/reference/endpoints/trades-for-account.html">Trades for Account</a>
         /// </Summary>
-        /// <param name="account">Account for which to get trades</param> 
-        public TradesRequestBuilder ForAccount(KeyPair account)
+        /// <param name="account">Account for which to get trades</param>
+        public TradesRequestBuilder ForAccount(string accountId)
         {
-            account = account ?? throw new ArgumentNullException(nameof(account), "account cannot be null");
-            this.SetSegments("accounts", account.AccountId, "trades");
+            if (accountId is null)
+                throw new ArgumentNullException(nameof(accountId), "accountId cannot be null");
+            this.SetSegments("accounts", accountId, "trades");
             return this;
         }
     }

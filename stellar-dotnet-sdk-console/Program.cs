@@ -44,7 +44,7 @@ namespace TestConsole
             Console.WriteLine("-- Show Account Transactions (ForAccount) --");
 
             var transactions = await server.Transactions
-                .ForAccount(KeyPair.FromAccountId("GAZHWW2NBPDVJ6PEEOZ2X43QV5JUDYS3XN4OWOTBR6WUACTUML2CCJLI"))
+                .ForAccount("GAZHWW2NBPDVJ6PEEOZ2X43QV5JUDYS3XN4OWOTBR6WUACTUML2CCJLI")
                 .Execute();
 
             ShowTransactionRecords(transactions.Records);
@@ -101,7 +101,7 @@ namespace TestConsole
                         break;
                 }
 
-            Console.WriteLine($"id: {lr.Sequence}, tx/ops: {lr.TransactionCount + "/" + lr.OperationCount}, accts: {accts}, payments: {payments}, offers: {offers}, options: {options}");
+            Console.WriteLine($"id: {lr.Sequence}, tx/ops: {lr.SuccessfulTransactionCount + "/" + lr.OperationCount}, accts: {accts}, payments: {payments}, offers: {offers}, options: {options}");
             Console.WriteLine($"Uri: {((LedgersRequestBuilder) sender).Uri}");
         }
 
@@ -109,8 +109,8 @@ namespace TestConsole
         {
             Console.WriteLine("-- Getting TestKey for Account --");
 
-            var data = server.Accounts.AccountData(KeyPair.FromAccountId("GAZHWW2NBPDVJ6PEEOZ2X43QV5JUDYS3XN4OWOTBR6WUACTUML2CCJLI"), "TestKey");
-            
+            var data = server.Accounts.AccountData("GAZHWW2NBPDVJ6PEEOZ2X43QV5JUDYS3XN4OWOTBR6WUACTUML2CCJLI", "TestKey");
+
             var dataResult = data.Result;
 
             Console.WriteLine("Encoded Value: " + dataResult.Value);
